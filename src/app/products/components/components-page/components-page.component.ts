@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/product';
 import { Observable, Subscription } from 'rxjs';
+import { CustomersService } from 'src/app/customers/customers.service';
+import { Customer } from 'src/app/customers/customer';
 
 @Component({
   selector: 'app-components-page',
@@ -11,13 +13,19 @@ import { Observable, Subscription } from 'rxjs';
 export class ComponentsPageComponent implements OnInit, OnDestroy {
 
   // products: Product[] = [];
-  // subscription: Subscription | undefined = undefined;
+  subscription: Subscription | undefined = undefined;
   products$: Observable<Product[]> | undefined = undefined;
+  customers: Customer[] = [];
 
-    constructor(private service: ProductsService) {
-    }
+  constructor(private service: ProductsService, private observableService: CustomersService) {
+    this.subscription = this.observableService.customersObservable$?.subscribe( (customer) => {
+      this.customers.push(customer);
+    });
+  }
+
+
   ngOnDestroy(): void {
-    // this.subscription?.unsubscribe();
+     this.subscription?.unsubscribe();
   }
   ngOnInit(): void {
     // this.products = this.service.getProducts();
@@ -25,7 +33,8 @@ export class ComponentsPageComponent implements OnInit, OnDestroy {
    //   (products: Product[]) => this.products = products,
    // );
 
-   this.products$ =  this.service.getProductsAsObservable();
+  // this.products$ =  this.service.getProductsAsObservable();
+  this.products$ =  this.service.getProductsAsObservableFromApi();
 
   }
 
