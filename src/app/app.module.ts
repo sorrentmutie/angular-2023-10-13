@@ -8,6 +8,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { CustomersDataComponent } from './shared/customers-data/customers-data.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ReactiveFormsModule} from '@angular/forms';
+import { MyReactiveFormComponent } from './shared/my-reactive-form/my-reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { FooterComponent } from './shared/footer/footer.component';
     ComponentsPageComponent,
     MenuComponent,
     CustomersDataComponent,
-    FooterComponent
+    FooterComponent,
+    MyReactiveFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
