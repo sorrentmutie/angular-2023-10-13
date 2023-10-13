@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class MyReactiveFormComponent {
 
   myGroup: FormGroup | undefined = undefined;
- // myControl = new FormControl('valore iniziale');
+ // myControl = new FormControl('valore iniziae');
  // myObservable$: Observable<string | null> | undefined = undefined;
 
   constructor(private fb: FormBuilder ) {
