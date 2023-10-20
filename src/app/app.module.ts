@@ -10,6 +10,13 @@ import { CustomersDataComponent } from './shared/customers-data/customers-data.c
 import { FooterComponent } from './shared/footer/footer.component';
 import { ReactiveFormsModule} from '@angular/forms';
 import { MyReactiveFormComponent } from './shared/my-reactive-form/my-reactive-form.component';
+import { FirstComponent } from './shared/first/first.component';
+import { SecondComponent } from './shared/second/second.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { WelcomeComponent } from './shared/welcome/welcome.component';
+import { FirstAComponent } from './shared/first-a/first-a.component';
+import { FirstBComponent } from './shared/first-b/first-b.component';
+import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +25,14 @@ import { MyReactiveFormComponent } from './shared/my-reactive-form/my-reactive-f
     MenuComponent,
     CustomersDataComponent,
     FooterComponent,
-    MyReactiveFormComponent
+    MyReactiveFormComponent,
+    FirstComponent,
+    SecondComponent,
+    NotFoundComponent,
+    WelcomeComponent,
+    FirstAComponent,
+    FirstBComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { Product } from '../../models/product';
 import { Observable, Subscription } from 'rxjs';
 import { CustomersService } from 'src/app/customers/customers.service';
 import { Customer } from 'src/app/customers/customer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-components-page',
@@ -17,12 +18,16 @@ export class ComponentsPageComponent implements OnInit, OnDestroy {
   products$: Observable<Product[]> | undefined = undefined;
   customers: Customer[] = [];
 
-  constructor(private service: ProductsService, private observableService: CustomersService) {
+  constructor(private router: Router, private service: ProductsService, private observableService: CustomersService) {
     this.subscription = this.observableService.customersObservable$?.subscribe( (customer) => {
       this.customers.push(customer);
     });
   }
 
+
+  gotoDetails(id: number){
+      this.router.navigate(['/products', id]);
+  }
 
   ngOnDestroy(): void {
      this.subscription?.unsubscribe();
