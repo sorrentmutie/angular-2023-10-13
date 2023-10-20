@@ -9,6 +9,8 @@ import { MyReactiveFormComponent } from './shared/my-reactive-form/my-reactive-f
 import { FirstAComponent } from './shared/first-a/first-a.component';
 import { FirstBComponent } from './shared/first-b/first-b.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
+import { firstGuard } from './first.guard';
+import { LoginComponent } from './shared/login/login.component';
 
 const routes: Routes = [
    { path: 'first', component: FirstComponent,
@@ -17,11 +19,12 @@ const routes: Routes = [
                { path: 'first-b', component: FirstBComponent }
               ]
    },
-   { path: 'second', component: SecondComponent },
+   { path: 'second', component: SecondComponent, canActivate: [firstGuard] },
    {path: 'products', component: ComponentsPageComponent},
    {path: 'products/:id', component: ProductDetailsComponent} ,
    {path: 'welcome', component: WelcomeComponent},
    {path: 'reactive', component: MyReactiveFormComponent},
+   {path: 'login', component: LoginComponent},
    {path: '', redirectTo: '/welcome', pathMatch: 'full'},
    {path: '**', component: NotFoundComponent}
 ];

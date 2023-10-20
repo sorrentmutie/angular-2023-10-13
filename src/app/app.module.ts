@@ -17,6 +17,7 @@ import { WelcomeComponent } from './shared/welcome/welcome.component';
 import { FirstAComponent } from './shared/first-a/first-a.component';
 import { FirstBComponent } from './shared/first-b/first-b.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
+import { LoginComponent } from './shared/login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProductDetailsComponent } from './products/components/product-details/p
     WelcomeComponent,
     FirstAComponent,
     FirstBComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

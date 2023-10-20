@@ -19,9 +19,23 @@
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/reactive']">Reactive</a>
       </li>
 
+
+      <li class="nav-item">
+        <div *ngIf="currentUser; else mylogin">
+            <img [src]="currentUser.photo" width="30" height="30" class="rounded-circle">
+            <button (click)="logout()">Logout</button>
+        </div>
+      </li>
+
+
     </ul>
   </div>
 </nav>
+
+<ng-template #mylogin>
+  <button (click)="login()">Login
+</button>
+
 <!-- <button (click)="start()">Start</button>
 <button (click)="stop()">Stop</button>
 {{name}} -->
