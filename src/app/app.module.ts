@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsPageComponent } from './products/components/components-page/components-page.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { CustomersDataComponent } from './shared/customers-data/customers-data.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -18,6 +18,10 @@ import { FirstAComponent } from './shared/first-a/first-a.component';
 import { FirstBComponent } from './shared/first-b/first-b.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { LoginComponent } from './shared/login/login.component';
+import { FirstInterceptor } from './shared/interceptors/first.interceptor';
+import { SecondInterceptor } from './shared/interceptors/second.interceptor';
+import { ShowRandomUserComponent } from './randomusers/show-random-user/show-random-user.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { LoginComponent } from './shared/login/login.component';
     FirstAComponent,
     FirstBComponent,
     ProductDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    ShowRandomUserComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,10 @@ import { LoginComponent } from './shared/login/login.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: FirstInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: SecondInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

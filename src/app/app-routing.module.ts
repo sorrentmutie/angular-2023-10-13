@@ -11,6 +11,7 @@ import { FirstBComponent } from './shared/first-b/first-b.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { firstGuard } from './first.guard';
 import { LoginComponent } from './shared/login/login.component';
+import { ShowRandomUserComponent } from './randomusers/show-random-user/show-random-user.component';
 
 const routes: Routes = [
    { path: 'first', component: FirstComponent,
@@ -25,7 +26,8 @@ const routes: Routes = [
    {path: 'welcome', component: WelcomeComponent},
    {path: 'reactive', component: MyReactiveFormComponent},
    {path: 'login', component: LoginComponent},
-   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
+   {path: 'randomuser', component: ShowRandomUserComponent},
+   {path: '', redirectTo: '/randomuser', pathMatch: 'full'},
    {path: '**', component: NotFoundComponent}
 ];
 

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, filter, map, of } from 'rxjs';
+import { NotificationsService } from './notifications/notifications.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,7 @@ import { Observable, Subscription, filter, map, of } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  visibility = false;
   title = 'my-app';
   subscription: Subscription | undefined = undefined;
   observable: Observable<number> | undefined = undefined;
@@ -30,5 +32,10 @@ export class AppComponent implements OnInit, OnDestroy {
    .subscribe(this.myObserver);
   }
 
+  constructor( private service: NotificationsService) {
+      service.loader$.subscribe( visibility => {
+        this.visibility = visibility;
+      });
+  }
 
 }
