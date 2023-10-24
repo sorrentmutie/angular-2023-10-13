@@ -1,0 +1,47 @@
+<p>esperimenti works!</p>
+
+
+<input type="text" (keyup)="betterkeyup(myInput.value)"  #myInput  >
+
+<!-- <input type="text" [formControl]="myFormControl">
+<button (click)="change()">Cambia valore</button>
+
+{{myFormControl.value}}
+
+{{myObservable | async}} -->
+
+<div *ngIf="myFormGroup">
+    <form [formGroup]="myFormGroup" (ngSubmit)="submit()">
+        <input formControlName="firstName">
+
+        <div [hidden]="firstName && (firstName.valid || firstName.pristine)" >
+
+            <div class="alert alert-danger" *ngIf="firstName && firstName.errors && firstName.errors['required']" >
+                Nome obbligatorio
+            </div>
+
+            <div class="alert alert-danger" *ngIf="firstName && firstName.errors && firstName.errors['minlength']" >
+                Lunghezza minima 5
+            </div>
+
+            <div class="alert alert-danger" *ngIf="firstName && firstName.errors && firstName.errors['myValidator']" >
+                il nome deve cominciare con s
+            </div>
+
+
+
+        </div>
+        <input formControlName="lastName">
+
+
+        <select formControlName="productId">
+            <option>--- Seleziona un prodotto ---</option>
+            <option *ngFor="let p of products" [value]="p.id"> {{p.name}}</option>
+        </select>
+    
+
+        <button [disabled]="!myFormGroup.valid" type="submit">OK</button>
+
+
+    </form>    
+</div>

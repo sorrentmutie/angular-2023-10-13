@@ -6,6 +6,8 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { ProductsPageComponent } from './products/components/products-page/products-page.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
+import { EsperimentiComponent } from './shared/components/esperimenti/esperimenti.component';
+import { HeroFormComponent } from './heroes/components/hero-form/hero-form.component';
 
 const routes: Routes = [
   { path: "randomusers", component: RandomUserPageComponent  },
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path: 'products', component: ProductsPageComponent},
   { path: "products/:id", component: ProductDetailsComponent},
   { path: "welcome", component: WelcomeComponent},
-  { path: '' , redirectTo: "welcome" ,  pathMatch: "full"}, 
+  { path: "esperimenti", component: EsperimentiComponent},
+  {path: 'hero-form', component: HeroFormComponent},
+  { path: '' , redirectTo: "esperimenti" ,  pathMatch: "full"}, 
   { path: '**',  component: NotFoundComponent}
 
 

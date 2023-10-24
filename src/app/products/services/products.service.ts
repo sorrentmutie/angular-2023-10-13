@@ -25,6 +25,13 @@ export class ProductsService {
     return of(this.getProducts());
   }
   
+  searchProductByName(search: string): Observable<Product[]> {
+    const products = this.getProducts()
+      .filter(p => p.name.startsWith(search));
+      return of(products);
+  }
+
+
   getProductById(id: number) : Observable<Product | undefined> {
 
     const products= this.getProducts().filter(p => p.id === id)
@@ -63,7 +70,16 @@ export class ProductsService {
         isAvailable : true,
         releaseDate: new Date(),
         image: "https://cdn.freebiesupply.com/logos/large/2x/angular-icon-1-logo-png-transparent.png"    
+      },
+      {
+        id : 37,
+        name: "Forno a legna",
+        price: 200,
+        isAvailable : true,
+        releaseDate: new Date(),
+        image: "https://cdn.freebiesupply.com/logos/large/2x/angular-icon-1-logo-png-transparent.png"    
       }
+
 
     ]
   }

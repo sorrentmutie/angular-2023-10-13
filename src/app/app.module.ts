@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,8 @@ import { ReqResPageComponent } from './reqres/components/req-res-page/req-res-pa
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
+import { EsperimentiComponent } from './shared/components/esperimenti/esperimenti.component';
+import { HeroFormComponent } from './heroes/components/hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,16 @@ import { WelcomeComponent } from './shared/components/welcome/welcome.component'
     ReqResPageComponent,
     NotFoundComponent,
     ProductDetailsComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    EsperimentiComponent,
+    HeroFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
+    , ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
