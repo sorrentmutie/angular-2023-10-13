@@ -12,6 +12,10 @@ import { ProductsPageComponent } from './products/components/products-page/produ
 import { ProductPipe } from './products/pipes/product.pipe';
 import { ProductsListComponent } from './products/components/products-list/products-list.component';
 import { RandomUserPageComponent } from './randomusers/components/random-user-page/random-user-page.component';
+import { ReqResPageComponent } from './reqres/components/req-res-page/req-res-page.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
+import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { RandomUserPageComponent } from './randomusers/components/random-user-pa
     ProductsPageComponent,
     ProductPipe,
     ProductsListComponent,
-    RandomUserPageComponent
+    RandomUserPageComponent,
+    ReqResPageComponent,
+    NotFoundComponent,
+    ProductDetailsComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

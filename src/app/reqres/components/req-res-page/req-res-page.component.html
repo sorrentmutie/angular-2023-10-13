@@ -1,0 +1,6 @@
+<p>req-res-page works!</p>
+<div *ngFor="let person of people| async">
+  <img src="{{person.avatar}}"/>
+  <p>{{person.first_name + " " + person.last_name}}</p>
+</div>
+

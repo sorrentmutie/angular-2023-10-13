@@ -24,6 +24,18 @@ export class ProductsService {
   getProductsAsObservable(): Observable<Product[]> {
     return of(this.getProducts());
   }
+  
+  getProductById(id: number) : Observable<Product | undefined> {
+
+    const products= this.getProducts().filter(p => p.id === id)
+        if(products.length === 1) {
+          return of(products[0]);
+        }    else {
+          return of(undefined);
+        }
+
+  }
+
 
 
   getProducts(): Product[] {

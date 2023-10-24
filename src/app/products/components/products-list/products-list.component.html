@@ -21,7 +21,9 @@
             <td>{{product.price | currency : 'EUR'}}</td>
             <td> <img src="{{product.image}}"/></td>
             <td>{{product.releaseDate | date: "dd/MM/yyyy"  }}</td>
-            <td><button (click)="remove(product)"  class="btn btn-danger"> Cancella </button></td>
+            <td><button (click)="remove(product)"  class="btn btn-danger"> Cancella </button>
+                <button (click)="update(product.id)" class="btn btn-info"> Modifica</button>
+            </td>
          </tr>
        </tbody>
     </table>
