@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { MySecondComponent } from './shared/components/my-second/my-second.compo
 import { ProductsPageComponent } from './products/components/products-page/products-page.component';
 import { ProductPipe } from './products/pipes/product.pipe';
 import { ProductsListComponent } from './products/components/products-list/products-list.component';
+import { RandomUserPageComponent } from './randomusers/components/random-user-page/random-user-page.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { ProductsListComponent } from './products/components/products-list/produ
     MySecondComponent,
     ProductsPageComponent,
     ProductPipe,
-    ProductsListComponent
+    ProductsListComponent,
+    RandomUserPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

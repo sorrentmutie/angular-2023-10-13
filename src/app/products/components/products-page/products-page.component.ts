@@ -27,11 +27,15 @@ export class ProductsPageComponent {
 
 
 
-  constructor() {
+  constructor(private service: ProductsService) {
 
-     const service = new ProductsService();
+     // const service = new ProductsService();
      this.randomNumber = service.getCounter();
-     this.discountedProducts = service.getProducts();
+     //this.discountedProducts = service.getProducts();
+     this.service.getProductsAsObservable().subscribe(data => this.discountedProducts = data);
+
+
+
      this.restockProducts =  service.getProducts();
   }
 

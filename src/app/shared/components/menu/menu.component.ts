@@ -10,9 +10,9 @@ export class MenuComponent {
   countMenu = 1;
   randomNumber = 0;
 
-  constructor(){
+  constructor(private service: ProductsService){
     setInterval(() => this.countMenu +=1,5000);
-    const service = new ProductsService();
+   // const service = new ProductsService();
     this.randomNumber = service.getCounter();
   }
 
