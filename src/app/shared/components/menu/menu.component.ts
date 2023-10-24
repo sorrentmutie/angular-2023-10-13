@@ -1,11 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { CustomersService } from 'src/app/customers/customers.service';
-import { EventBusService } from '../../event-bus.service';
-import { Customer } from 'src/app/customers/customer';
-import { Events } from '../../events';
-import { Subscription } from 'rxjs';
-import { LoginService } from '../../services/login.service';
-import { User } from '../../models/user';
+import { Component } from '@angular/core';
+import { ProductsService } from 'src/app/products/services/products.service';
 
 @Component({
   selector: 'app-menu',
@@ -13,42 +7,14 @@ import { User } from '../../models/user';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-   private subscrition: Subscription | undefined = undefined;
+  countMenu = 1;
+  randomNumber = 0;
 
-   currentUser: User | undefined = undefined;
-   name= "";
-   constructor(private service: CustomersService, private eventBus: EventBusService,
-    private loginService: LoginService) {
-    this.currentUser = loginService.currentUser;
-    this.service.customersObservable$?.subscribe( (customer) => {
-      this.name = customer.name;
-    });
-
-   this.subscrition =  this.eventBus.on(Events.CustomerAdded, (customer: Customer) => {
-      this.name = customer.name;
-   });
-
+  constructor(){
+    setInterval(() => this.countMenu +=1,5000);
+    const service = new ProductsService();
+    this.randomNumber = service.getCounter();
   }
 
-  start(){
-    this.service.start();
-  }
 
-  stop(){
-    this.service.stop();
-  }
-
-  logout(){
-    //const loginService = inject(LoginService);
-    this.currentUser = undefined;
-    this.loginService.logout();
-  }
-
-  login(): void{
-    this.loginService.login().subscribe(
-      () => {
-        this.currentUser = this.loginService.currentUser;
-      }
-    );
-  }
 }
