@@ -1,5 +1,10 @@
 
-<app-products-list [title]="discountedTitle"  (emitter)="removeDiscountedProduct($event)"    [products]="discountedProducts" ></app-products-list>
+<button (click)="doLogout()">Logout</button>
+<app-products-list [title]="discountedTitle"
+
+  (emitterModify)="modifyDiscountedProduct($event)"
+  (emitter)="removeDiscountedProduct($event)"    [products]="discountedProducts" >
+</app-products-list>
 
  
 <app-products-list [title]="restockTitle" (emitter)="removeRestockProduct($event)" [products]="restockProducts"></app-products-list>

@@ -19,6 +19,15 @@
             <a class="nav-link" routerLink="/reqres" routerLinkActive="active">Req res</a>
           </li>
 
+          <div *ngIf="currentUser; else notLogged">
+              <span>{{currentUser.nome}}</span>
+              <button (click)="doLogout()">Logout</button>
+              <img src="{{currentUser.imageUrl}}">
+            </div>
+            <ng-template #notLogged>
+              <button (click)="doLogin()">Login</button>
+            </ng-template>
+          
         </ul>
       </div>
     </div>

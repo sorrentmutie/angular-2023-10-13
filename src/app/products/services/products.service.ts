@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { OfferService } from './offer.service';
-import { Observable, of} from 'rxjs';
+import { Observable, Subject, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
+  private subject: Subject<Product> = new Subject<Product>();
+  observableProduct$ : Observable<Product> | undefined = undefined;
   counter = 0;
 
   constructor(private service: OfferService) {
-    console.log("sono nel costruttore del servizio Products");
+    this.observableProduct$ = this.subject.asObservable();
     this.counter = Math.random();
 
+   }
+
+   lastModifiedProduct(product: Product) {
+    this.subject.next(product);
    }
 
    getCounter(): number {

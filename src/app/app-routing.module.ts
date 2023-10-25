@@ -8,16 +8,20 @@ import { ProductDetailsComponent } from './products/components/product-details/p
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 import { EsperimentiComponent } from './shared/components/esperimenti/esperimenti.component';
 import { HeroFormComponent } from './heroes/components/hero-form/hero-form.component';
+import { firstGuard } from './shared/guards/first.guard';
+import { secondGuard } from './shared/guards/second.guard';
+import { LoginComponent } from './login/login/login.component';
 
 const routes: Routes = [
-  { path: "randomusers", component: RandomUserPageComponent  },
-  { path: 'reqres', component: ReqResPageComponent },
+  { path: "randomusers", component: RandomUserPageComponent },
+  { path: 'reqres', component: ReqResPageComponent, canActivate: [firstGuard, secondGuard] },
   { path: 'products', component: ProductsPageComponent},
   { path: "products/:id", component: ProductDetailsComponent},
+  { path: "login", component: LoginComponent},
   { path: "welcome", component: WelcomeComponent},
   { path: "esperimenti", component: EsperimentiComponent},
   {path: 'hero-form', component: HeroFormComponent},
-  { path: '' , redirectTo: "esperimenti" ,  pathMatch: "full"}, 
+  { path: '' , redirectTo: "login" ,  pathMatch: "full"}, 
   { path: '**',  component: NotFoundComponent}
 
 

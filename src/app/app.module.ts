@@ -27,6 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NotificationsComponent } from './shared/components/notifications/notifications.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LoginComponent } from './login/login/login.component';
+import { ThirdComponent } from './shared/components/third/third.component';
+import { FourthComponent } from './shared/components/fourth/fourth.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
     EsperimentiComponent,
     HeroFormComponent,
     NotificationsComponent,
-    LoaderComponent
+    LoaderComponent,
+    LoginComponent,
+    ThirdComponent,
+    FourthComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,4 @@ import { LoaderService } from './shared/services/loader.service';
 })
 export class AppComponent {
   title = 'my-demo';
-  show = true;
-  constructor() {
-  }
 }

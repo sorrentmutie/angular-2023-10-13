@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
+import { NotificationsComponent } from 'src/app/shared/components/notifications/notifications.component';
+import { NotificationService } from 'src/app/notifiche/notification.service';
+import { LoginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-products-page',
@@ -27,7 +30,7 @@ export class ProductsPageComponent {
 
 
 
-  constructor(private service: ProductsService) {
+  constructor(private service: ProductsService, private notificationService: NotificationService, private loginService:LoginService) {
 
      // const service = new ProductsService();
      this.randomNumber = service.getCounter();
@@ -47,8 +50,16 @@ removeRestockProduct(product: Product) {
   console.log(product);
 }
 
+modifyDiscountedProduct(product: Product) {
+  this.notificationService.sendNotification( {
+    code: 200,
+    text: product.name,
+    cssClass: ""
+  })
+}
 
-
-
+doLogout(){
+  this.loginService.logout();
+}
 
 }
