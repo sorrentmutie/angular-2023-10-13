@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,14 @@ import { ProductDetailsComponent } from './products/components/product-details/p
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 import { EsperimentiComponent } from './shared/components/esperimenti/esperimenti.component';
 import { HeroFormComponent } from './heroes/components/hero-form/hero-form.component';
+import { FirstInterceptor } from './shared/interceptors/first.interceptor';
+import { SecondInterceptor } from './shared/interceptors/second.interceptor';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+import { NotificationsComponent } from './shared/components/notifications/notifications.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -36,16 +44,23 @@ import { HeroFormComponent } from './heroes/components/hero-form/hero-form.compo
     ProductDetailsComponent,
     WelcomeComponent,
     EsperimentiComponent,
-    HeroFormComponent
+    HeroFormComponent,
+    NotificationsComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
-    , ReactiveFormsModule
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: FirstInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: SecondInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
